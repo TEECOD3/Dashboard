@@ -48,12 +48,12 @@ function LoginForm() {
           name="email"
           render={({ field }) => (
             <FormItem>
-              <FormLabel className="!font-semibold !text-space-cadet !text-t12 !leading-[-0.3px]">
+              <FormLabel className="!font-semibold !text-space-cadet !text-xs !leading-[-0.3px]">
                 Email address/Staff ID
               </FormLabel>
               <FormControl>
                 <Input
-                  className="!py-[1.1875rem] !h-auto !px-4 !text-space-cadet !text-t14 !border-grey-white !rounded-[0.3125rem]"
+                  className="!py-[1.1875rem] !h-auto !px-4 !text-space-cadet !text-sm !border-grey-white !rounded-[0.3125rem]"
                   placeholder="Enter your email address"
                   {...field}
                 />
@@ -67,12 +67,12 @@ function LoginForm() {
           name="passkey"
           render={({ field }) => (
             <FormItem>
-              <FormLabel className="!font-semibold !text-space-cadet !text-t12 !leading-[-0.3px]">
+              <FormLabel className="!font-semibold !text-space-cadet !text-xs !leading-[-0.3px]">
                 PassKey
               </FormLabel>
               <FormControl>
                 <PasswordInput
-                  className="!py-[1.1875rem] !h-auto !px-4 !text-space-cadet !text-t14 !border-grey-white !rounded-[0.3125rem]"
+                  className="!py-[1.1875rem] !h-auto !px-4 !text-space-cadet !text-sm !border-grey-white !rounded-[0.3125rem]"
                   placeholder="Type out your passkey"
                   {...field}
                 />
@@ -83,7 +83,7 @@ function LoginForm() {
         />
         <Button
           type="submit"
-          className="!bg-main-blue !w-full !py-[1.4375rem] !h-auto !text-white !font-semibold !text-t14"
+          className="!bg-main-blue !w-full !py-[1.4375rem] !h-auto !text-white !font-semibold !text-sm"
         >
           Log In
         </Button>
