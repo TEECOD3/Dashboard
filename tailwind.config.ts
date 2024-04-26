@@ -44,7 +44,8 @@ const config = {
         'primary-200': "#88CBF9",
         'primary-800': "#204E76",
         'primary-900': "#13344F",
-        'umber': "#7B6941"
+        'umber': "#7B6941",
+        crayola: "#FFC645"
       },
 
       keyframes: {

@@ -6,7 +6,7 @@ import Search from "@/components/ui/search";
 import Topbar from "@/components/ui/Topbar";
 import { cn } from "@/lib/utils";
 import React, { useState } from "react";
-import BroadcastMessageForm from "./BroadcastMessageForm";
+import BroadcastMessageForm from "@/components/Forms/BroadcastMessageForm";
 import Card from "./Card";
 
 const tabs = [
