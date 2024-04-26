@@ -2,7 +2,7 @@ import { Chevrodown } from "@/components/custom_icons/Chevrondown";
 import { ChevronDown } from "lucide-react";
 import Image from "next/image";
 import React from "react";
-import image from "../../../../../public/Clockimage.png";
+import image from "../../../../../public/Clockimage.svg";
 
 type Props = {};
 
