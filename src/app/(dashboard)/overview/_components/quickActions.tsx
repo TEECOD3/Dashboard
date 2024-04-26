@@ -2,23 +2,12 @@
 import CalenderAddIcon from "@/components/custom_icons/Calenderaddicon";
 import MessageEditIcon from "@/components/custom_icons/MessageEdit";
 import UserCircleAdd from "@/components/custom_icons/UserCircleadd";
+import { Overlay } from "@/components/ui/overlay";
+import { SheetTrigger } from "@/components/ui/sheet";
 import React from "react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import {
-  Sheet,
-  SheetClose,
-  SheetContent,
-  SheetDescription,
-  SheetFooter,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from "@/components/ui/sheet";
+import CreateEventForm from "@/components/Forms/CreateEventForm";
 import { AddUserModal } from "./Modals/addUserModal";
-import { CreateBroadcastMessageModal } from "./Modals/createBroadcastMessageModal";
-import { CreateEventModal } from "./Modals/createEventModal";
+import BroadcastMessageForm from "@/components/Forms/BroadcastMessageForm";
 
 type Props = {};
 
@@ -41,25 +30,31 @@ function QuickActions(props: Props) {
           </SheetTrigger>
         </AddUserModal>
 
-        <CreateBroadcastMessageModal>
-          <SheetTrigger asChild>
+        <Overlay
+          title={"Create Broadcast Message"}
+          triggerComponent={
             <ActionWidget
               icon={<MessageEditIcon />}
-              actionTitle="create Broadcast Message"
+              actionTitle="Create Broadcast Message"
               onClick={() => {}}
             />
-          </SheetTrigger>
-        </CreateBroadcastMessageModal>
+          }
+        >
+          <BroadcastMessageForm />
+        </Overlay>
 
-        <CreateEventModal>
-          <SheetTrigger asChild>
+        <Overlay
+          title={"Create an Event"}
+          triggerComponent={
             <ActionWidget
               icon={<CalenderAddIcon />}
               actionTitle="create An Event"
               onClick={() => {}}
             />
-          </SheetTrigger>
-        </CreateEventModal>
+          }
+        >
+          <CreateEventForm />
+        </Overlay>
       </div>
     </div>
   );

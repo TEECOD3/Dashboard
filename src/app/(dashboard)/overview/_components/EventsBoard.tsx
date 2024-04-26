@@ -2,6 +2,7 @@
 import React from "react";
 import { Calendar } from "@/components/ui/calendar";
 import { CircleChevronRight } from "lucide-react";
+import Link from "next/link";
 
 type Props = {};
 
@@ -29,12 +30,12 @@ function EventsBoard(props: Props) {
               upcoming Events
             </span>
           </div>
-          <div className="flex items-center gap-x-1">
+          <Link href="/events" className="flex items-center gap-x-1">
             <span className="text-[12px] text-main-blue  font-semibold capitalize cursor-pointer">
               see more
             </span>
             <CircleChevronRight size={12} />
-          </div>
+          </Link>
         </div>
         <div className="flex flex-col gap-y-4 mt-6">
           <EventWidget />
