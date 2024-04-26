@@ -80,14 +80,14 @@ const Sidebar = () => {
         {links?.map((link, index) => (
           <li key={index}>
             {link?.header ? (
-              <span className="text-xs text-grey-black block mt-8 mb-[1.5rem] uppercase">
+              <span className="text-xs text-grey-black block mt-10 mb-[1.5rem] uppercase">
                 {link?.name}
               </span>
             ) : (
               <Link
                 href={link?.href as string}
                 className={cn(
-                  "flex space-x-4 text-sm text-charleston rounded-[0.5rem] duration-75 hover:bg-gradient-to-tl hover:from-button-blue hover:to-midnight-blue hover:font-semibold hover:text-white items-center p-4",
+                  "flex space-x-4 text-sm mt-2 text-charleston rounded-[0.5rem] duration-75 hover:bg-gradient-to-tl hover:from-button-blue hover:to-midnight-blue hover:font-semibold hover:text-white items-center p-4",
                   {
                     "text-white font-semibold bg-gradient-to-tl from-button-blue to-midnight-blue":
                       pathname === link?.href,
