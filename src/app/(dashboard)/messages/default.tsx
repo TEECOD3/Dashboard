@@ -6,6 +6,7 @@ import Search from "@/components/ui/search";
 import Topbar from "@/components/ui/Topbar";
 import { cn } from "@/lib/utils";
 import React, { useState } from "react";
+import BroadcastMessageForm from "./BroadcastMessageForm";
 import Card from "./Card";
 
 const tabs = [
@@ -34,7 +35,9 @@ function DefaultPage() {
         showActionBtn
         actionButtonLabel="Send Broadcast"
         overlayTitle="Create Broadcast Message"
-      />
+      >
+        <BroadcastMessageForm />
+      </Topbar>
       <div className="flex">
         <div className="px-4 w-full lg:px-[3.5rem] pt-8">
           <div className="flex flex-col space-y-3 lg:space-y-0 lg:flex-row mb-8 items-center justify-between">

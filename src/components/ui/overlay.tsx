@@ -28,7 +28,7 @@ export function Overlay({ title, triggerComponent, children }: OverlayProps) {
             {title}
           </SheetTitle>
         </SheetHeader>
-        {children}
+        <div className="p-8"> {children}</div>
       </SheetContent>
     </Sheet>
   );
