@@ -12,6 +12,7 @@ interface Props {
   actionButtonLabel?: string;
   action?: () => void;
   overlayTitle?: string;
+  children?: React.ReactNode;
 }
 
 const Topbar = ({
@@ -21,6 +22,7 @@ const Topbar = ({
   showActionBtn = false,
   actionButtonLabel,
   overlayTitle,
+  children,
 }: Props) => {
   return (
     <header
@@ -59,7 +61,7 @@ const Topbar = ({
               </button>
             }
           >
-            <></>
+            {children ? children : <></>}
           </Overlay>
         )}
         <NotificationIcon />

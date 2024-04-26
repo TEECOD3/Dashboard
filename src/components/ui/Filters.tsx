@@ -25,7 +25,7 @@ export const SortButton = ({
   label,
   defaultValue = "all",
   options,
-  popOverContentClassName = "!min-w-[6.5rem]"
+  popOverContentClassName = "!min-w-[6.5rem]",
 }: SortButtonProps) => {
   const searchParams = useSearchParams();
   const pathname = usePathname();
@@ -57,7 +57,7 @@ export const SortButton = ({
             <span className="text-primary ml-0.5 capitalize">
               {value === "all" ? label : value}
             </span>
-            <ArrowDownIcon className="" />
+            <ArrowDownIcon className="text-main-blue" />
           </button>
         </PopoverTrigger>
         <PopoverContent
