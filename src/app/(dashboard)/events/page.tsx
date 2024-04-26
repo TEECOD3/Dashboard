@@ -1,7 +1,7 @@
 import DataGridTable from "@/components/ui/DataGridTable";
 import Topbar from "@/components/ui/Topbar";
 import React from "react";
-import CreateEventForm from "./CreateEventForm";
+import CreateEventForm from "@/components/Forms/CreateEventForm";
 import { DataTable } from "./dataTable";
 
 function page() {

@@ -1,12 +1,8 @@
 import { Chevrodown } from "@/components/custom_icons/Chevrondown";
-import { ChevronDown } from "lucide-react";
 import Image from "next/image";
 import React from "react";
-import image from "../../../../../public/Clockimage.png";
 
-type Props = {};
-
-export function StatusBoard(props: Props) {
+export function StatusBoard() {
   return (
     <div className="w-full rounded-xl bg-gradient-to-tl shadow-lg from-button-blue to-midnight-blue flex h-[148px] py-6 px-6">
       <div
@@ -27,7 +23,7 @@ export function StatusBoard(props: Props) {
           </div>
           <div className="">
             <div className="flex flex-col ml-10">
-              <h3 className="text-3xl font-bold text-white align-baseline">
+              <h3 className="text-3xl font-bold text-crayola align-baseline">
                 05
               </h3>
               <p className="text-[12px] capitalize text-pale">events created</p>
@@ -55,8 +51,8 @@ export function StatusBoard(props: Props) {
       </div>
       <div className="flex-1 flex items-center justify-center">
         <Image
-          src={image}
-          alt="clockimage"
+          src="/clockImage.svg"
+          alt="clock"
           className="mt-7"
           height={250}
           width={200}
