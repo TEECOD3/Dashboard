@@ -115,6 +115,51 @@ const CreateEventForm = () => {
           )}
         />
 
+        <FormField
+          control={form.control}
+          name="mode_of_delivery"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel className="!font-semibold !text-space-cadet !text-xs !leading-[-0.3px]">
+                Mode of Delivery
+              </FormLabel>
+              <Select onValueChange={field.onChange} defaultValue={field.value}>
+                <FormControl>
+                  <SelectTrigger>
+                    <SelectValue placeholder="Select a mode of delivery" />
+                  </SelectTrigger>
+                </FormControl>
+                <SelectContent>
+                  <SelectItem value="physical">Physical Class</SelectItem>
+                  <SelectItem value="virtual">Virtual Class</SelectItem>
+                  <SelectItem value="both">Both</SelectItem>
+                </SelectContent>
+              </Select>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
+        <FormField
+          control={form.control}
+          name="location"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel className="!font-semibold !text-space-cadet !text-xs !leading-[-0.3px]">
+                Location
+              </FormLabel>
+              <FormControl>
+                <Input
+                  className="!py-4 !h-auto !px-4 !text-space-cadet !text-sm !border-grey-white !rounded-[0.3125rem]"
+                  placeholder="Enter your event location"
+                  {...field}
+                />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
         <Button
           type="submit"
           className="!bg-main-blue space-x-[0.625rem] !w-full !py-4 !h-auto !text-white !font-semibold !text-sm"

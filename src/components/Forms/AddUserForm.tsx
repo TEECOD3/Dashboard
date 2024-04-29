@@ -1,7 +1,4 @@
 "use client";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
-import { z } from "zod";
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -12,29 +9,32 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { PasswordInput } from "@/components/ui/password-input";
-import { useRouter } from "next/navigation";
-import { SheetClose, SheetFooter } from "@/components/ui/sheet";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
 
 const formSchema = z.object({
-  firstname: z.string().min(1, { message: "firstname is required" }),
-  lastname: z.string().min(1, { message: "firstname is required" }),
-  email: z
-    .string()
-    .min(1, { message: "Email is required" })
-    .email("Invalid email address"),
+  first_name: z.string(),
+  last_name: z.string(),
+  email: z.string(), // add more validation if api only requires email
   role: z.string(),
 });
 
-export function AddUserForm() {
-  const { push } = useRouter();
+const AddUserForm = () => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
+      first_name: "",
+      last_name: "",
       email: "",
-      lastname: "",
       role: "",
-      firstname: "",
     },
   });
 
@@ -44,10 +44,10 @@ export function AddUserForm() {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-7">
         <FormField
           control={form.control}
-          name="firstname"
+          name="first_name"
           render={({ field }) => (
             <FormItem>
               <FormLabel className="!font-semibold !text-space-cadet !text-xs !leading-[-0.3px]">
@@ -55,65 +55,8 @@ export function AddUserForm() {
               </FormLabel>
               <FormControl>
                 <Input
-                  className="!py-[0.7rem] !h-auto !px-4 !text-space-cadet !text-sm !border-grey-white !rounded-[0.3125rem]"
-                  placeholder="Enter your first name"
-                  {...field}
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="lastname"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel className="!font-semibold !text-space-cadet !text-xs !leading-[-0.3px]">
-                Last Name
-              </FormLabel>
-              <FormControl>
-                <Input
-                  className="!py-[0.7rem] !h-auto !px-4 !text-space-cadet !text-sm !border-grey-white !rounded-[0.3125rem]"
-                  placeholder="Enter your lastname"
-                  {...field}
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="email"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel className="!font-semibold !text-space-cadet !text-xs !leading-[-0.3px]">
-                Email address/Staff ID
-              </FormLabel>
-              <FormControl>
-                <Input
-                  className="!py-[0.7rem] !h-auto !px-4 !text-space-cadet !text-sm !border-grey-white !rounded-[0.3125rem]"
-                  placeholder="Enter your email address"
-                  {...field}
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="role"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel className="!font-semibold !text-space-cadet !text-xs !leading-[-0.3px]">
-                Assign role
-              </FormLabel>
-              <FormControl>
-                <PasswordInput
-                  className="!py-[0.7rem]  !h-auto !px-4 !text-space-cadet !text-sm !border-grey-white !rounded-[0.3125rem]"
-                  placeholder="Enter a role for this user"
+                  className="!py-4 !h-auto !px-4 !text-space-cadet !text-sm !border-grey-white !rounded-[0.3125rem]"
+                  placeholder="Enter your event name"
                   {...field}
                 />
               </FormControl>
@@ -122,17 +65,80 @@ export function AddUserForm() {
           )}
         />
 
-        {/* <SheetFooter> */}
-        {/* <SheetClose asChild> */}
+        <FormField
+          control={form.control}
+          name="last_name"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel className="!font-semibold !text-space-cadet !text-xs !leading-[-0.3px]">
+                Last Name
+              </FormLabel>
+              <FormControl>
+                <Input
+                  className="!py-4 !h-auto !px-4 !text-space-cadet !text-sm !border-grey-white !rounded-[0.3125rem]"
+                  placeholder="Enter your event name"
+                  {...field}
+                />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
+        <FormField
+          control={form.control}
+          name="email"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel className="!font-semibold !text-space-cadet !text-xs !leading-[-0.3px]">
+                Email Address / Staff ID
+              </FormLabel>
+              <FormControl>
+                <Input
+                  className="!py-4 !h-auto !px-4 !text-space-cadet !text-sm !border-grey-white !rounded-[0.3125rem]"
+                  placeholder="Enter your event name"
+                  {...field}
+                />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
+        <FormField
+          control={form.control}
+          name="role"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel className="!font-semibold !text-space-cadet !text-xs !leading-[-0.3px]">
+                Assign Role
+              </FormLabel>
+              <Select onValueChange={field.onChange} defaultValue={field.value}>
+                <FormControl>
+                  <SelectTrigger>
+                    <SelectValue placeholder="Select role" />
+                  </SelectTrigger>
+                </FormControl>
+                <SelectContent>
+                  <SelectItem value="lecturers">Lecturers</SelectItem>
+                  <SelectItem value="students">Students</SelectItem>
+                  <SelectItem value="users">Users</SelectItem>
+                </SelectContent>
+              </Select>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
         <Button
           type="submit"
-          className="!bg-main-blue !w-full !py-[1.075rem] !h-auto !text-white !font-semibold !text-sm !mt-8"
+          className="!bg-main-blue space-x-[0.625rem] !w-full !py-4 !h-auto !text-white !font-semibold !text-sm"
         >
-          save user
+          <span>Save User</span>
         </Button>
-        {/* </SheetClose> */}
-        {/* </SheetFooter> */}
       </form>
     </Form>
   );
-}
+};
+
+export default AddUserForm;
