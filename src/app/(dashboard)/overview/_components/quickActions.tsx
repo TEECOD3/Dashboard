@@ -2,12 +2,11 @@
 import CalenderAddIcon from "@/components/custom_icons/Calenderaddicon";
 import MessageEditIcon from "@/components/custom_icons/MessageEdit";
 import UserCircleAdd from "@/components/custom_icons/UserCircleadd";
-import { Overlay } from "@/components/ui/overlay";
-import { SheetTrigger } from "@/components/ui/sheet";
-import React from "react";
-import CreateEventForm from "@/components/Forms/CreateEventForm";
-import { AddUserModal } from "./Modals/addUserModal";
+import AddUserForm from "@/components/Forms/AddUserForm";
 import BroadcastMessageForm from "@/components/Forms/BroadcastMessageForm";
+import CreateEventForm from "@/components/Forms/CreateEventForm";
+import { Overlay } from "@/components/ui/overlay";
+import React from "react";
 
 type Props = {};
 
@@ -20,15 +19,18 @@ function QuickActions(props: Props) {
         </h3>
       </div>
       <div className="mt-8 flex-col gap-y-3 flex">
-        <AddUserModal>
-          <SheetTrigger asChild>
+        <Overlay
+          title={"Add user"}
+          triggerComponent={
             <ActionWidget
               icon={<UserCircleAdd />}
               actionTitle="Add user"
               onClick={() => {}}
             />
-          </SheetTrigger>
-        </AddUserModal>
+          }
+        >
+          <AddUserForm />
+        </Overlay>
 
         <Overlay
           title={"Create Broadcast Message"}

@@ -1,7 +1,8 @@
 import DataGridTable from "@/components/ui/DataGridTable";
 import Topbar from "@/components/ui/Topbar";
-import React from "react";
+import React, { Suspense } from "react";
 import { DataTable } from "./dataTable";
+import AddLecturerForm from "@/components/Forms/AddLecturerForm";
 
 function page() {
   return (
@@ -10,12 +11,17 @@ function page() {
         heading="Lecturers"
         showActionBtn
         actionButtonLabel="Add Lecturer"
-      />
-      <div className="px-4 lg:px-[3.5rem] pt-8">
-        <DataGridTable searchLabel="Search Lecturers">
-          <DataTable />
-        </DataGridTable>
-      </div>
+        overlayTitle="Add Lecturer"
+      >
+        <AddLecturerForm />
+      </Topbar>
+      <Suspense>
+        <div className="px-4 lg:px-[3.5rem] pt-8">
+          <DataGridTable searchLabel="Search Lecturers">
+            <DataTable />
+          </DataGridTable>
+        </div>
+      </Suspense>
     </>
   );
 }
