@@ -1,6 +1,7 @@
 import { Chevrodown } from "@/components/custom_icons/Chevrondown";
 import Image from "next/image";
 import React from "react";
+import image from "../../../../../public/Clockimage.svg";
 
 export function StatusBoard() {
   return (
