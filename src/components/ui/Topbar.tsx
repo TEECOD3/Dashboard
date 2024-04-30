@@ -4,6 +4,7 @@ import React from "react";
 import CircleAddIcon from "../custom_icons/CircleAddIcon";
 import NotificationIcon from "../custom_icons/NotificationIcon";
 import { Overlay } from "./overlay";
+import NotificationBing from "../custom_icons/NotificationBing";
 
 interface Props {
   heading: string;
@@ -64,10 +65,80 @@ const Topbar = ({
             {children ? children : <></>}
           </Overlay>
         )}
-        <NotificationIcon />
+
+        <Overlay
+          title="Notification"
+          triggerComponent={
+            <div className="cursor-pointer">
+              <NotificationIcon />
+            </div>
+          }
+        >
+          <div className="h-full w-full p-2">
+            <Notifications />
+          </div>
+        </Overlay>
       </span>
     </header>
   );
 };
 
 export default Topbar;
+
+function Notifications() {
+  return (
+    <div className="">
+      <div className="">
+        <p className="capitalize font-semibold text-[14px]">today</p>
+
+        <div className="mt-8 space-y-5">
+          {[1, 2, 3, 4].map((notification, notificationIdx) => (
+            <NotificationWidget
+              title="Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias illo repellendus tempore "
+              time="9th june 2023"
+              key={notificationIdx}
+            />
+          ))}
+        </div>
+      </div>
+
+      <div className="mt-10">
+        <p className="capitalize font-semibold text-[14px]">yesterday</p>
+
+        <div className="mt-8 space-y-5">
+          {[1, 2, 3, 4].map((notification, notificationIdx) => (
+            <NotificationWidget
+              title="Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias illo repellendus tempore "
+              time="9th june 2023"
+              key={notificationIdx}
+            />
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+type TNotificationWidgetProps = {
+  time: string;
+  title: string;
+};
+
+function NotificationWidget(props: TNotificationWidgetProps) {
+  const { time, title } = props;
+  return (
+    <div>
+      <div className="flex items-center justify-center gap-x-3 mb-6">
+        <div className=" p-2 rounded-full bg-gray-100 size-8 flex items-center justify-center ">
+          <NotificationBing />
+        </div>
+        <div className="flex flex-col flex-1">
+          <p className="text-[12px] line-clamp-1">{title}</p>
+          <p className="text-[8px]">{time}</p>
+        </div>
+      </div>
+
+      <hr />
+    </div>
+  );
+}
