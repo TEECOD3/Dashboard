@@ -8,7 +8,9 @@ function layout({
   return (
     <div className="lg:grid h-dvh overflow-hidden bg-alice-blue lg:grid-cols-[18rem,1fr]">
       <Sidebar />
-      <main className="relative overflow-auto h-dvh pb-6">{children}</main>
+      <main className="relative overflow-auto h-dvh pb-6 max-w-screen-2xl">
+        {children}
+      </main>
     </div>
   );
 }

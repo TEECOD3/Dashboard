@@ -1,5 +1,9 @@
 "use client";
-import { departments, faculties, levels } from "@/lib/static-modal-data";
+import {
+  departments,
+  faculties,
+  levels,
+} from "@/lib/static_data/static-modal-data";
 import { cn } from "@/lib/utils";
 import React, { Children, useState } from "react";
 import CategoryIcon from "../custom_icons/CategoryIcon";
@@ -14,6 +18,7 @@ interface DataGridTableProps {
   data: any[];
   children: React.ReactNode;
   searchLabel: string;
+  event?: boolean;
 }
 
 const DataGridTable = ({
@@ -21,6 +26,7 @@ const DataGridTable = ({
   searchLabel,
   data,
   renderGrid,
+  event,
 }: DataGridTableProps) => {
   const [view, setView] = useState<"grid" | "table">("table");
   return (
@@ -28,7 +34,15 @@ const DataGridTable = ({
       <div className="flex flex-col space-y-3 lg:space-y-0 lg:flex-row mb-8 items-center justify-between">
         <Search placeholder={searchLabel} />
         <div className="flex flex-wrap lg:flex-nowrap w-full lg:w-fit items-center gap-3">
-          <SortButton label="All Levels" name="level" options={levels} />
+          {event ? (
+            <SortButton
+              label="This month"
+              name="type"
+              options={["this month", "last month"]}
+            />
+          ) : (
+            <SortButton label="All Levels" name="level" options={levels} />
+          )}
           <SortButton
             popOverContentClassName="!min-w-[9.9375rem]"
             label="All Faculties"
@@ -41,11 +55,19 @@ const DataGridTable = ({
             name="department"
             options={departments}
           />
-          <SortButton
-            label="Sort By"
-            name="sortBy"
-            options={["name", "date"]}
-          />
+          {event ? (
+            <SortButton
+              label="All types"
+              name="type"
+              options={["physical", "virtual", "social"]}
+            />
+          ) : (
+            <SortButton
+              label="Sort By"
+              name="sortBy"
+              options={["name", "date"]}
+            />
+          )}
         </div>
       </div>
       <div className="flex items-center justify-between mb-[1.25rem]">

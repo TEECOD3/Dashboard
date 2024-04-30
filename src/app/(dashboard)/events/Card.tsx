@@ -4,15 +4,13 @@ import MoreIcon from "@/components/custom_icons/MoreIcon";
 
 export interface CardProps {
   id: string;
-  gender: string;
-  level: number;
-  first_name: string;
-  last_name: string;
-  mat_no: string;
+  type: string;
+  date: string;
+  name: string;
+  location: string;
   faculty: string;
   department: string;
   className?: string;
-  onClick?: () => void;
 }
 
 const Card = ({ className = "", ...data }: CardProps) => {
@@ -21,10 +19,10 @@ const Card = ({ className = "", ...data }: CardProps) => {
       <div className="mb-3 flex items-start justify-between">
         <span className="flex items-center space-x-2">
           <span className="border border-main-blue rounded-[0.25rem] px-2 py-1 text-xs text-main-blue">
-            {data?.gender}
+            {data?.type}
           </span>
           <span className="border border-umber rounded-[0.25rem] px-2 py-1 text-xs text-umber">
-            {data?.level} Level
+            {data?.date}
           </span>
         </span>
         <button className="text-grey-black">
@@ -33,9 +31,9 @@ const Card = ({ className = "", ...data }: CardProps) => {
       </div>
       <span className="block mb-3">
         <h3 className="text-sm font-semibold text-dark-blue mb-2">
-          {data?.first_name} {data?.last_name}
+          {data?.name}
         </h3>
-        <h4 className="text-xs text-dark-blue">{data?.mat_no}</h4>
+        <h4 className="text-xs text-dark-blue">{data?.location}</h4>
       </span>
       <span className="flex space-x-1 items-center text-xs text-dark-blue">
         <span>{data?.faculty}</span>

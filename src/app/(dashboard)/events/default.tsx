@@ -7,35 +7,28 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuSub,
-  DropdownMenuSubTrigger,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Overlay } from "@/components/ui/overlay";
-import { students } from "@/lib/static_data";
 import { ColumnDef } from "@tanstack/react-table";
 import { ArrowUpDown, MoreHorizontal } from "lucide-react";
-import React, { useMemo, useState } from "react";
-import Card from "./_components/Card";
-import StudentInformation from "./_components/StudentInformation";
-import { DataTable } from "../../../components/ui/dataTable";
+import React, { useMemo } from "react";
+import { DataTable } from "@/components/ui/dataTable";
+import Card, { CardProps } from "./Card";
 
-export type Student = {
-  id: string;
-  gender: string;
-  level: number;
-  first_name: string;
-  last_name: string;
-  mat_no: string;
-  faculty: string;
-  department: string;
-};
-
-const data: Student[] = students;
+const data: CardProps[] = [
+  {
+    id: "01",
+    name: "Name of the event ",
+    location: "Location 1, 12pm",
+    date: "12 October",
+    type: "Social",
+    faculty: "Faculty of Arts",
+    department: "Department of Music",
+  },
+];
 
 function DefaultPage() {
-  const columns: ColumnDef<Student>[] = useMemo(
+  const columns: ColumnDef<CardProps>[] = useMemo(
     () => [
       {
         id: "select",
@@ -66,7 +59,7 @@ function DefaultPage() {
         enableHiding: false,
       },
       {
-        accessorKey: "mat_no",
+        accessorKey: "id",
         header: ({ column }) => {
           return (
             <Button
@@ -76,29 +69,29 @@ function DefaultPage() {
               }
               className="w-full"
             >
-              Mat. Num.
+              ID
               <ArrowUpDown className="ml-2 h-4 w-4" />
             </Button>
           );
         },
         cell: ({ row }) => (
           <div className="capitalize text-center !text-dark-blue">
-            {row.getValue("mat_no")}
+            {row.getValue("id")}
           </div>
         ),
       },
       {
-        accessorKey: "first_name",
-        header: "First Name",
+        accessorKey: "name",
+        header: "Event",
         cell: ({ row }) => (
-          <div className="capitalize">{row.getValue("first_name")}</div>
+          <div className="capitalize">{row.getValue("name")}</div>
         ),
       },
       {
-        accessorKey: "last_name",
-        header: "Last Name",
+        accessorKey: "location",
+        header: "Location",
         cell: ({ row }) => (
-          <div className="capitalize">{row.getValue("last_name")}</div>
+          <div className="capitalize">{row.getValue("location")}</div>
         ),
       },
       {
@@ -116,20 +109,11 @@ function DefaultPage() {
         ),
       },
       {
-        accessorKey: "level",
-        header: "Level",
+        accessorKey: "type",
+        header: "Type",
         cell: ({ row }) => (
-          <div className="border w-fit border-umber rounded-[0.25rem] px-2 py-1 text-xs text-umber">
-            {row.getValue("level")} Level
-          </div>
-        ),
-      },
-      {
-        accessorKey: "gender",
-        header: "Gender",
-        cell: ({ row }) => (
-          <div className="capitalize w-fit border border-main-blue rounded-[0.25rem] px-2 py-1 text-xs text-main-blue">
-            {row.getValue("gender")}
+          <div className="border w-fit border-main-blue rounded-[0.25rem] px-2 py-1 text-xs text-main-blue capitalize">
+            {row.getValue("type")}
           </div>
         ),
       },
@@ -138,7 +122,7 @@ function DefaultPage() {
         header: "Action",
         enableHiding: false,
         cell: ({ row }) => {
-          const student = row.original;
+          const course = row.original;
 
           return (
             <DropdownMenu>
@@ -150,23 +134,6 @@ function DefaultPage() {
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end">
                 <DropdownMenuLabel>Action</DropdownMenuLabel>
-                <Overlay
-                  title="Student Information"
-                  triggerComponent={
-                    <div>
-                      <DropdownMenuSub>
-                        <DropdownMenuSubTrigger
-                          hideIcon
-                          className="cursor-pointer hover:bg-main-blue"
-                        >
-                          View student details
-                        </DropdownMenuSubTrigger>
-                      </DropdownMenuSub>
-                    </div>
-                  }
-                >
-                  <StudentInformation {...student} />
-                </Overlay>
               </DropdownMenuContent>
             </DropdownMenu>
           );
@@ -179,21 +146,12 @@ function DefaultPage() {
   return (
     <div className="px-4 lg:px-[3.5rem] pt-8">
       <DataGridTable
-        data={students}
+        data={data}
+        event
         renderGrid={(item, index) => (
-          <Overlay
-            key={index}
-            title="Student Information"
-            triggerComponent={
-              <div>
-                <Card className="cursor-pointer" {...item} />
-              </div>
-            }
-          >
-            <StudentInformation {...item} />
-          </Overlay>
+          <Card key={index} className="cursor-pointer" {...item} />
         )}
-        searchLabel="Search Students"
+        searchLabel="Search"
       >
         <DataTable data={data} columns={columns} />
       </DataGridTable>

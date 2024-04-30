@@ -21,7 +21,7 @@ const links = [
   },
   {
     href: "/session",
-    name: "Session",
+    name: "Academic Session",
     icon: <ClockIcon />,
   },
   {

@@ -1,18 +1,13 @@
-import DataGridTable from "@/components/ui/DataGridTable";
 import Topbar from "@/components/ui/Topbar";
 import React, { Suspense } from "react";
-import { DataTable } from "./dataTable";
+import DefaultPage from "./default";
 
 function page() {
   return (
     <>
       <Topbar heading="Courses" />
       <Suspense>
-        <div className="px-4 lg:px-[3.5rem] pt-8">
-          <DataGridTable searchLabel="Search Courses">
-            <DataTable />
-          </DataGridTable>
-        </div>
+        <DefaultPage />
       </Suspense>
     </>
   );

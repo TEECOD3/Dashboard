@@ -1,6 +1,7 @@
 import { Toaster } from "@/components/ui/sonner";
 import type { Metadata } from "next";
 import { Sora } from "next/font/google";
+import { BrowserView, MobileView } from "react-device-detect";
 import "./globals.css";
 
 const sora = Sora({ subsets: ["latin"] });
@@ -18,8 +19,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={sora.className}>
-        <main>{children}</main>
-        <Toaster />
+        <BrowserView>
+          <main>{children}</main>
+          <Toaster />
+        </BrowserView>
+        <MobileView>
+          <div></div>
+        </MobileView>
       </body>
     </html>
   );

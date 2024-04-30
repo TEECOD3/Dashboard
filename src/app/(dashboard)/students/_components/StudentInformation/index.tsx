@@ -16,7 +16,7 @@ const StudentInformation = ({ ...data }: Partial<CardProps>) => {
         </span>
         <span className="block">
           <h3 className="text-base mb-2 font-semibold text-main-blue -tracking-[0.3px]">
-            {data?.name}
+            {data?.first_name} {data?.last_name}
           </h3>
           <h6 className="text-xs text-dark-blue opacity-50">{data?.mat_no}</h6>
         </span>
