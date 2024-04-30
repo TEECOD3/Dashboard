@@ -63,7 +63,7 @@ export const Graph: React.FC<TGraphsProps> = () => {
       <div className="flex gap-x-2 px-6 items-center text-base font-semibold capitalize">
         <span className="text-space-cadet">attendance trend per time</span>
         <div className="flex items-center">
-          <span className="text-main-blue space-x-2">this week</span>
+          <span className="text-main-blue text-xs space-x-2">this week</span>
           <Chevrodown />
         </div>
       </div>
