@@ -2,10 +2,10 @@ import UserIcon from "@/components/custom_icons/UserIcon";
 import { TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Tabs } from "@radix-ui/react-tabs";
 import React from "react";
-import { CardProps } from "./Card";
-import CourseCard from "./CourseCard";
-import Sessions from "./Sessions";
-import Overview from "./Overview";
+import { CardProps } from "../Card";
+import CourseCard from "./tabs/CourseCard";
+import Overview from "./tabs/Overview";
+import Sessions from "./tabs/Sessions";
 
 const StudentInformation = ({ ...data }: Partial<CardProps>) => {
   return (
