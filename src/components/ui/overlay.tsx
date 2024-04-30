@@ -22,7 +22,7 @@ export function Overlay({ title, triggerComponent, children }: OverlayProps) {
         {/* <Button variant="outline">Open</Button> */}
         {triggerComponent}
       </SheetTrigger>
-      <SheetContent className="p-0">
+      <SheetContent className="p-0 overflow-auto styled-scrollbar">
         <SheetHeader>
           <SheetTitle className="text-sm pt-6 px-4 border-b border-grey-white pb-6">
             {title}
