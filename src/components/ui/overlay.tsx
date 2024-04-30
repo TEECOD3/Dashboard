@@ -1,9 +1,7 @@
-import { Button } from "@/components/ui/button";
+import { ScrollArea } from "@/components/ui/scroll-area";
 import {
   Sheet,
-  SheetClose,
   SheetContent,
-  SheetFooter,
   SheetHeader,
   SheetTitle,
   SheetTrigger,
@@ -28,7 +26,9 @@ export function Overlay({ title, triggerComponent, children }: OverlayProps) {
             {title}
           </SheetTitle>
         </SheetHeader>
-        <div className="p-8"> {children}</div>
+        <ScrollArea className="h-full">
+          <div className="p-8 pb-24"> {children}</div>
+        </ScrollArea>
       </SheetContent>
     </Sheet>
   );

@@ -1,34 +1,27 @@
 "use client";
-import { faculties, levels } from "@/lib/static-modal-data";
+import { departments, faculties, levels } from "@/lib/static-modal-data";
 import { cn } from "@/lib/utils";
-import React, { useState } from "react";
+import React, { Children, useState } from "react";
 import CategoryIcon from "../custom_icons/CategoryIcon";
 import RowIcon from "../custom_icons/RowIcon";
 import SquareArrowLeftIcon from "../custom_icons/SquareArrowLeftIcon";
 import SquareArrowRightIcon from "../custom_icons/SquareArrowRightIcon";
-import Card from "./Card";
-import { SortButton } from "./Filters";
+import { SortButton, SortButtonWithGroupedData } from "./Filters";
 import Search from "./search";
 
-const Grid = () => {
-  return (
-    <div className="grid gap-x-4 gap-y-6 md:grid-cols-2 lg:grid-cols-3">
-      {Array(9)
-        .fill("")
-        .map((d, i) => (
-          <Card key={i} />
-        ))}
-    </div>
-  );
-};
+interface DataGridTableProps {
+  renderGrid: (item: any, index: number) => React.ReactNode;
+  data: any[];
+  children: React.ReactNode;
+  searchLabel: string;
+}
 
 const DataGridTable = ({
   children,
   searchLabel,
-}: {
-  children: React.ReactNode;
-  searchLabel: string;
-}) => {
+  data,
+  renderGrid,
+}: DataGridTableProps) => {
   const [view, setView] = useState<"grid" | "table">("table");
   return (
     <div>
@@ -42,13 +35,17 @@ const DataGridTable = ({
             name="faculty"
             options={faculties}
           />
-          <SortButton
+          <SortButtonWithGroupedData
             popOverContentClassName="!min-w-[9.9375rem]"
             label="All Departments"
             name="department"
-            options={faculties}
+            options={departments}
           />
-          <SortButton label="Sort By" name="sortBy" options={[]} />
+          <SortButton
+            label="Sort By"
+            name="sortBy"
+            options={["name", "date"]}
+          />
         </div>
       </div>
       <div className="flex items-center justify-between mb-[1.25rem]">
@@ -84,7 +81,19 @@ const DataGridTable = ({
           </span>
         </div>
       </div>
-      <div>{view === "table" ? children : <Grid />}</div>
+      <div>
+        {view === "table" ? (
+          children
+        ) : (
+          <div className="grid gap-x-4 gap-y-6 md:grid-cols-2 lg:grid-cols-3">
+            {Children.toArray(
+              data?.map((item: ReturnType<(typeof data)[0]>, index) =>
+                renderGrid(item, index)
+              )
+            )}
+          </div>
+        )}
+      </div>
     </div>
   );
 };

@@ -7,5 +7,10 @@ export const faculties = [
 ]
 
 export const departments = [
-    "Art", "Engineering", "Mass Communication", "science"
+    { header: true, label: "Faculty of  Arts" },
+    { label: "Department of Psychology", value: "department_of_psychology" },
+    { label: "Department of Music", value: "department_of_music" },
+    { header: true, label: "Faculty of  Engineering" },
+    { label: "Department of Mechanical Engineering", value: "department_of_mechanical_engineering" },
+    { label: "Department of Chemical Engineering", value: "department_of_chemical_engineering" }
 ]

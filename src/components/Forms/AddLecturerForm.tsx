@@ -15,6 +15,7 @@ import { CircleAlert } from "lucide-react";
 import Link from "next/link";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
+import { FileUploader } from "../ui/file-upload";
 import { SheetClose } from "../ui/sheet";
 
 const WarningComponent = () => {
@@ -101,14 +102,14 @@ const SendInvite = () => {
 };
 
 const csvSchema = z.object({
-  csv: z.string(),
+  csv: z.array(z.instanceof(File)),
 });
 
 const ImportCSV = () => {
   const form = useForm<z.infer<typeof csvSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      csv: "",
+      csv: [],
     },
   });
 
@@ -123,18 +124,22 @@ const ImportCSV = () => {
           control={form.control}
           name="csv"
           render={({ field }) => (
-            <FormItem>
-              <FormControl>
-                <Input
-                  accept=".csv"
-                  type="file"
-                  className="!py-4 !h-auto !px-4 !text-space-cadet !text-sm !border-grey-white !rounded-[0.3125rem]"
-                  placeholder="Click or drag-and drop to upload CSV"
-                  {...field}
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
+            <div className="space-y-6">
+              <FormItem className="w-full">
+                <FormControl>
+                  <FileUploader
+                    value={field.value}
+                    onValueChange={field.onChange}
+                    maxFiles={1}
+                    maxSize={1 * 1024 * 1024}
+                    accept={{ ".csv": [] }}
+                    // pass the onUpload function here for direct upload
+                    // onUpload={uploadFiles}
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            </div>
           )}
         />
 

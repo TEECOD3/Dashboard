@@ -47,7 +47,9 @@ const config = {
         'umber': "#7B6941",
         crayola: "#FFC645",
         ucla: "#FFB400",
-        'cosmic-latte': "#FFF7E5"
+        'cosmic-latte': "#FFF7E5",
+        cultured: "#F5F5F5",
+        "red-400": "#A82430"
       },
 
       keyframes: {

@@ -27,7 +27,7 @@ const formSchema = z.object({
   name: z.string(),
   audience: z.string(),
   description: z.string(),
-  startTime: z.string(),
+  start_time: z.string(),
   duration: z.string(),
   mode_of_delivery: z.string(),
   location: z.string(),
@@ -114,7 +114,62 @@ const CreateEventForm = () => {
             </FormItem>
           )}
         />
-
+        <div className="grid grid-cols-2 gap-4">
+          <FormField
+            control={form.control}
+            name="start_time"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel className="!font-semibold !text-space-cadet !text-xs !leading-[-0.3px]">
+                  Start Time
+                </FormLabel>
+                <Select
+                  onValueChange={field.onChange}
+                  defaultValue={field.value}
+                >
+                  <FormControl>
+                    <SelectTrigger>
+                      <SelectValue placeholder="Select a start time" />
+                    </SelectTrigger>
+                  </FormControl>
+                  <SelectContent>
+                    <SelectItem value="physical">Physical Class</SelectItem>
+                    <SelectItem value="virtual">Virtual Class</SelectItem>
+                    <SelectItem value="both">Both</SelectItem>
+                  </SelectContent>
+                </Select>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="duration"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel className="!font-semibold !text-space-cadet !text-xs !leading-[-0.3px]">
+                  Duration
+                </FormLabel>
+                <Select
+                  onValueChange={field.onChange}
+                  defaultValue={field.value}
+                >
+                  <FormControl>
+                    <SelectTrigger>
+                      <SelectValue placeholder="Select a Duration" />
+                    </SelectTrigger>
+                  </FormControl>
+                  <SelectContent>
+                    <SelectItem value="physical">Physical Class</SelectItem>
+                    <SelectItem value="virtual">Virtual Class</SelectItem>
+                    <SelectItem value="both">Both</SelectItem>
+                  </SelectContent>
+                </Select>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+        </div>
         <FormField
           control={form.control}
           name="mode_of_delivery"
