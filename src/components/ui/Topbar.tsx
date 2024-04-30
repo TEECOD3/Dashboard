@@ -90,7 +90,7 @@ function Notifications() {
     <div className="">
       <div className="">
         <p className="capitalize font-semibold text-[14px]">today</p>
-        <hr />
+
         <div className="mt-8 space-y-5">
           {[1, 2, 3, 4].map((notification, notificationIdx) => (
             <NotificationWidget
@@ -104,7 +104,7 @@ function Notifications() {
 
       <div className="mt-10">
         <p className="capitalize font-semibold text-[14px]">yesterday</p>
-        <hr />
+
         <div className="mt-8 space-y-5">
           {[1, 2, 3, 4].map((notification, notificationIdx) => (
             <NotificationWidget
