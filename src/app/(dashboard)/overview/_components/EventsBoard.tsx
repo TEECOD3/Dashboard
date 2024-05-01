@@ -9,7 +9,7 @@ type Props = {};
 function EventsBoard(props: Props) {
   const [date, setDate] = React.useState<Date | undefined>(new Date());
   return (
-    <div className="bg-white w-full shadow-lg rounded-lg divide-x-2 flex h-[380px] ">
+    <div className="bg-white w-full shadow-lg rounded-lg divide-x-2 flex h-[380px] mb-8">
       <div className="p-6 h-full ">
         <div className="w-full h-full  ">
           <Calendar

@@ -62,8 +62,6 @@ function QuickActions(props: Props) {
   );
 }
 
-export default QuickActions;
-
 type TActionWidget = {
   icon: React.ReactElement;
   actionTitle: string;
@@ -83,3 +81,5 @@ function ActionWidget(props: TActionWidget) {
     </div>
   );
 }
+
+export default QuickActions;

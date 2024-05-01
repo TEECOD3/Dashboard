@@ -5,9 +5,7 @@ import DataGridTable from "@/components/ui/DataGridTable";
 import {
   DropdownMenu,
   DropdownMenuContent,
-  DropdownMenuItem,
   DropdownMenuLabel,
-  DropdownMenuSeparator,
   DropdownMenuSub,
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,

@@ -4,7 +4,6 @@ import { ChevronDown, CircleX } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import React from "react";
 import BookIcon from "../custom_icons/BookIcon";
 import BriefcaseIcon from "../custom_icons/BriefcaseIcon";
 import { CalendarIcon } from "../custom_icons/CalendarIcon";
@@ -12,6 +11,7 @@ import ClockIcon from "../custom_icons/ClockIcon";
 import MessagesIcon from "../custom_icons/MessagesIcon";
 import OverviewIcon from "../custom_icons/OverviewIcon";
 import UserIcon from "../custom_icons/UserIcon";
+import AdministratorPopOver from "./AdministratorPopover";
 
 const links = [
   {
@@ -110,7 +110,9 @@ const Sidebar = () => {
             <span className="font-semibold text-space-cadet text-t14">
               Dele Chukwudele
             </span>
-            <ChevronDown className="w-[1rem] h-[1rem] text-main-blue" />
+            <AdministratorPopOver onLogout={() => {}}>
+              <ChevronDown className="w-[1rem] h-[1rem] text-main-blue cursor-pointer" />
+            </AdministratorPopOver>
           </button>
           <span className="uppercase bg-primary-30 border-primary-200 border rounded-[0.25rem] p-[0.5rem] text-[0.625rem] text-space-cadet">
             Administrator
