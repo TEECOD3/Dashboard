@@ -2,6 +2,8 @@ import { Chevrodown } from "@/components/custom_icons/Chevrondown";
 import Image from "next/image";
 import React from "react";
 import image from "../../../../../public/Clockimage.svg";
+import { SortButton } from "@/components/ui/Filters";
+import { PeriodOption, levels } from "@/lib/static_data/static-modal-data";
 
 export function StatusBoard() {
   return (
@@ -12,8 +14,14 @@ export function StatusBoard() {
       >
         <div className="flex gap-x-2 items-center text-[12px] font-semibold capitalize">
           <span className="text-pale">your status:</span>
-          <div className="flex items-center">
-            <span className="text-white space-x-2">this week</span>
+
+          <div className="flex items-center cursor-pointer">
+            <SortButton
+              name="type"
+              options={PeriodOption}
+              textlabel="this week"
+              textlabelclass="text-white font-semibold text-[0.75rem] capitalize"
+            />
             <Chevrodown />
           </div>
         </div>

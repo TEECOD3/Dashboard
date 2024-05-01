@@ -5,6 +5,8 @@ import ReactApexChart from "react-apexcharts";
 
 import { ApexOptions } from "apexcharts";
 import dynamic from "next/dynamic";
+import { SortButton } from "@/components/ui/Filters";
+import { PeriodOption } from "@/lib/static_data/static-modal-data";
 const ApexChart = dynamic(() => import("react-apexcharts"), { ssr: false });
 interface TGraphsProps {}
 
@@ -62,8 +64,13 @@ export const Graph: React.FC<TGraphsProps> = () => {
     <div className="bg-white pt-6 h-[350px] w-full shadow-lg rounded-lg">
       <div className="flex gap-x-2 px-6 items-center text-base font-semibold capitalize">
         <span className="text-space-cadet">attendance trend per time</span>
-        <div className="flex items-center">
-          <span className="text-main-blue text-xs space-x-2">this week</span>
+        <div className="flex items-center cursor-pointer">
+          <SortButton
+            name="type"
+            options={PeriodOption}
+            textlabel="this week"
+            textlabelclass="text-main-blue font-semibold text-[0.75rem] capitalize"
+          />
           <Chevrodown />
         </div>
       </div>
