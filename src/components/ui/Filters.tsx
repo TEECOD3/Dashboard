@@ -16,14 +16,18 @@ interface SortButtonProps {
   name: string;
   defaultValue?: string;
   options: string[];
-  label: string;
+  label?: string;
   popOverContentClassName?: string;
+  textlabel?: string;
+  textlabelclass?: string;
 }
 
 export const SortButton = ({
   name,
   label,
+  textlabel,
   defaultValue = "all",
+  textlabelclass,
   options,
   popOverContentClassName = "!min-w-[7rem]",
 }: SortButtonProps) => {
@@ -53,31 +57,49 @@ export const SortButton = ({
       <BackDrop showBackdrop={showPopover} />
       <Popover open={showPopover} onOpenChange={setShowPopover}>
         <PopoverTrigger asChild>
-          <button className="flex items-center space-x-[0.625rem] capitalize text-dark-blue text-xs bg-white border-pale border p-[0.75rem] rounded-[0.625rem]">
-            <span className="text-primary ml-0.5 capitalize">
-              {value === "all" ? label : value}
+          {textlabel ? (
+            <span className={cn(textlabelclass)}>
+              {value === "all" ? textlabel : value}
             </span>
-            <ArrowDownIcon className="text-main-blue" />
-          </button>
+          ) : (
+            <button className="flex items-center space-x-[0.625rem] capitalize text-dark-blue text-xs bg-white border-pale border p-[0.75rem] rounded-[0.625rem]">
+              <span className="text-primary ml-0.5 capitalize">
+                {value === "all" ? label : value}
+              </span>
+              <ArrowDownIcon className="text-main-blue" />
+            </button>
+          )}
         </PopoverTrigger>
         <PopoverContent
           className={`z-50 !p-0 !w-full ${popOverContentClassName}`}
           align="start"
         >
-          <h4 className="text-main-blue capitalize text-xs pb-3 pt-5 border-b px-4">
+          <h4
+            className={cn(
+              "text-main-blue capitalize text-xs pb-3 pt-5 border-b px-4",
+              { "p-0 border-0 ": textlabel }
+            )}
+          >
             {label}
           </h4>
           <ul className="w-full text-grey-black text-xs *:w-full">
             {options.map((option, index) => (
               <li
                 key={index}
-                className="py-2 px-4 w-full hover:bg-alice-blue duration-75 transition-colors"
+                className={cn(
+                  "py-2 px-4 w-full hover:bg-alice-blue duration-75 transition-colors",
+                  { "hover:bg-main-blue/50 ": textlabel }
+                )}
               >
                 <button
                   onClick={() => handleSort(option)}
-                  className={cn("w-full text-left h-full block", {
-                    "text-main-blue": value === option,
-                  })}
+                  className={cn(
+                    "w-full text-left h-full block",
+                    {
+                      "text-main-blue": value === option,
+                    },
+                    { "text-space-cadet ": textlabel && value === option }
+                  )}
                 >
                   <span className="capitalize">{option}</span>
                 </button>

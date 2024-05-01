@@ -54,7 +54,7 @@ type TEventWidgetProps = {};
 function EventWidget(props: TEventWidgetProps) {
   return (
     <div className="p-4 bg-white w-full shadow-lg rounded-lg h-[4.4rem] ring-[1px] ring-pale text-space-cadet">
-      <div className="flex justify-between  items-center">
+      <div className="flex justify-between items-center">
         <div className="flex flex-col gap-y-2">
           <span className="text-[8px] uppercase">assignments</span>
           <span className="text-[12px] capitalize">
